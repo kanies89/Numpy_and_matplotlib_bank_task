@@ -195,6 +195,7 @@ if __name__ == '__main__':
         new_periods.append(months)
     new_periods = np.array(new_periods)
 
+
     periods = np.arange(0, 61, dtype=int)
     savings = monthly_to_save * periods
     price = []
