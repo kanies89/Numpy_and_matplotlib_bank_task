@@ -182,24 +182,21 @@ if __name__ == '__main__':
     # 3. Stwórz wykres przedstawiający, jak w interwałach miesięcznych zmieniać się będzie cena mieszkania (liniowy wzrost w całym okresie) oraz wartość twojej lokaty.
 
     periods_savings = []
-    year = 0
-    new_periods = []
-    months = 0
-    for i in range(72):
-        if i == 0:
-            continue
-        if i < 12:
-            months = 0
-        if i % 12 == 0:
-            months += 12
-        new_periods.append(months)
-    new_periods = np.array(new_periods)
-
-
-    periods = np.arange(0, 61, dtype=int)
-    savings = monthly_to_save * periods
+    periods = np.arange(0, 60, dtype=int)
+    savings = []
+    saved = 0
+    for i in periods:
+        interest_equal = np.around(npf.ppmt(pp_locate/12, i, -nper, -saved), 2)
+        print(interest_equal)
+        saved += monthly_to_save + interest_equal
+        savings.append(saved)
+    savings = np.array(savings)
+    savings_payed = periods * monthly_to_save
+    savings = savings + savings_payed
+    print(savings.size)
+    print(savings)
     price = []
-    for i in new_periods:
+    for i in periods:
         price.append(price_change(i))
 
     plt.plot(price, label='wzrost wartości mieszkania')
