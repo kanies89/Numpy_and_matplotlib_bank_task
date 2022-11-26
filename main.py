@@ -198,7 +198,8 @@ if __name__ == '__main__':
     price = []
     for i in periods:
         price.append(price_change(i))
-
+    saved = np.cumsum(np.ones(61, dtype=int) * monthly_to_save)
+    print(saved)
     plt.plot(price, label='wzrost wartości mieszkania')
     plt.plot(savings, label='wpłaty na lokatę')
     plt.legend()
