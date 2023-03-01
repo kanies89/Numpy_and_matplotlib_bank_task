@@ -1,4 +1,4 @@
-# Python-Jupyter-notebook---numpy-matplotlib---working-with-data-visualization
+# Numpy_and_matplotlib_bank_task
 
 Python / Jupyter notebook
 libraries: numpy / matplotlib
